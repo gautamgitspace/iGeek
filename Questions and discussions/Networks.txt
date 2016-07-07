@@ -1,0 +1,10 @@
+Q - Can DNS use TCP? In which cases DNS uses TCP?
+A - DNS uses TCP for Zone Transfer over Port: 53
+It is necessary to maintain a consistent DNS database between DNS Servers. This is achieved by the TCP protocol.
+This communication happens between DNS Servers only. The Zone Transfer feature of DNS Server will always use TCP protocol.
+The connection is established between the DNS Server to transfer the zone data and Source and Destination DNS Servers
+will make sure that data is consistent by using TCP ACK bit.
+
+DNS uses UDP for DNS Queries over Port: 53
+A client computer will always send a DNS Query using UDP Protocol over Port 53. If a client computer does not get response from a DNS Server,
+it must re-transmit the DNS Query using the TCP after 3-5 seconds of interval.
