@@ -8,3 +8,14 @@ will make sure that data is consistent by using TCP ACK bit.
 DNS uses UDP for DNS Queries over Port: 53
 A client computer will always send a DNS Query using UDP Protocol over Port 53. If a client computer does not get response from a DNS Server,
 it must re-transmit the DNS Query using the TCP after 3-5 seconds of interval.
+
+Q - How does BGP work?
+A - BGP is an Exterior Gateway Routing Protocol and is used to do routing between ASs or ISPs. Has 4 message types: Open(Open a BGP session with the peer),
+Keeplalive(duh!), Update(Routing updates) and Notification(Bad!). Main reason to use BGP is influence inbound or outbound(mostly) routes. This means giving
+preference to one path over other depending on various factors and policies. Has a long metric list. N-W-L-Li-AS path-O-M-N-I. Has two flavors. eBGP and iBGP.
+
+Q - What's the difference between a router and switch?
+A - Router: L3 device, High forwarding rates, Highly configurable, connects two LANs, WANs, PDU-Packet, each port has own broadcast domain, does forwarding on
+software logic (Routing Tables)
+Switch: L2 device, less configurable, connects devices in a LAN, PDU-Frame, each port has own collision domain and whole switch is one broadcast domain, does forwarding
+on hardware logic (CAM and ASICs)
