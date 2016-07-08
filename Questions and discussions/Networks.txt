@@ -19,3 +19,9 @@ A - Router: L3 device, High forwarding rates, Highly configurable, connects two 
 software logic (Routing Tables)
 Switch: L2 device, less configurable, connects devices in a LAN, PDU-Frame, each port has own collision domain and whole switch is one broadcast domain, does forwarding
 on hardware logic (CAM and ASICs)
+
+Q - Define bandwidth
+A - bandwidth is technically the data capacity of a network. It measures the volume of data for a transmission connection.
+Bandwidth is measured in kilobits per second or “Kbps.”
+
+Q - 
