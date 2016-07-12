@@ -1,3 +1,9 @@
+"""
+Write a function get_products_of_all_ints_except_at_index()
+that takes a list of integers and returns a list of the products.
+for each index you want to find the product of every integer
+except the integer at that index.
+"""
 def get_products_of_all_ints_except_at_index(list_of_numbers):
     resultant_array = [1] * len(list_of_numbers)
     product = 1
