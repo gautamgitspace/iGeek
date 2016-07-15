@@ -11,3 +11,6 @@ What if when we find a new current max (new_max), instead of overwriting the old
 What data structure should we store our set of maxs in? We want something where the last item we put in is the first item we get out ("last in, first out").
 
 We can store our maxs in another stack!
+
+O(1) time for push(), pop(), and get_max()
+O(m) additional space, where m is the number of operations performed on the stack.
