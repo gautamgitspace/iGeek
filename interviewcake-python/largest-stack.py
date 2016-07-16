@@ -23,17 +23,15 @@ class MaxStack:
 
 s=MaxStack()
 
-s.push(4)
-s.push(5)
-s.push(6)
+s.push(45)
+s.push(35)
+s.push(65)
 max1 = s.getmax()
-print "max after pushing 4,5 and 6: ", max1
-s.push(8)
+print "max after pushing 45,35 and 65: ", max1
+s.push(87)
 max2 = s.getmax()
-print "max after pushing 8 now: ", max2
-print max2
-print(s.pop())
-print(s.pop())
+print "max after pushing 87 now: ", max2
+print "POPPING CHERRY", (s.pop())
+print"POPPING CHERRY", (s.pop())
 max3 = s.getmax()
 print "max after popping 2 elements: ", max3
-
