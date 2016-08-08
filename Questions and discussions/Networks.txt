@@ -24,4 +24,17 @@ Q - Define bandwidth
 A - bandwidth is technically the data capacity of a network. It measures the volume of data for a transmission connection.
 Bandwidth is measured in kilobits per second or “Kbps.”
 
-Q - 
+Q - SDN Architecture
+A - The Controller in Control Plane is the brain of the Networking Device. Rather than each device having its own brain, the Controller is a single brain
+controlling hundreds of devices.  Benefits - Easier management(policies). The Controller can push centralized  polices and configuration down to the data
+plane. An application programmer can create an application that commands the Controller through the REST or JAVA API(North Bound Communication using the
+North Bound API). The controller then uses OpenFlow(South Bound API) to update the flow tables in the switches giving them instruction of the flow.(South
+Bound Communication). OpenFlow only updates the flow tables. Does not install routing protocols.
+
+3 Layers of SDN Architecture:
+1. Application Layer -  Where the Application resides. This application talks to the Controller using the REST or JAVA API
+2. Control Layer - The Control Plane where the Controller resides. Receives communication from the application(North) and sends instructions to the
+Infrastructure layer via the OpenFlow
+3. Infrastructure Layer - The Data Plane. Performs forwarding.
+
+East West Communication - Controller X talks to Controller Y in the Control Layer.
