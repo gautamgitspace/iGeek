@@ -373,6 +373,42 @@ class LinkedList
             ptr=ptr.getLink();
         }
     }
+    //CTCI 2_6 - slow runner fast runner approach
+    public void forceLoop()
+    {
+        Node iteratingPointer = start;
+        for(int i=0; i<3; i++)
+        {
+            iteratingPointer=iteratingPointer.getLink();
+        }
+        end.setLink(iteratingPointer);
+    }
+    public Node detectLoop()
+    {
+        Node slow = start;
+        Node fast = start;
+        while(fast!=null && fast.getLink()!=null)
+        {
+            slow=slow.getLink();
+            fast=fast.getLink().getLink();
+            if(slow==fast)
+            {
+                break;
+            }
+        }
+        if(fast==null || fast.getLink()==null)
+        {
+            return null;
+        }
+        slow = start;
+        while(slow!=fast)
+        {
+            slow=slow.getLink();
+            fast=fast.getLink();
+        }
+        return fast;
+    }
+
 
     public void displayList()
     {
@@ -394,14 +430,19 @@ class LetsHitIT
         linkedList.insertAtEnd(19);
         linkedList.insertAtEnd(8);
         linkedList.insertAtEnd(13);
-
-        linkedList.displayList();
-        System.out.println();
-        linkedList.insertAtPosi(3,12);
-        linkedList.displayList();
-        System.out.println();
-        System.out.println("CURRENT SIZE: "+ linkedList.getSize());
-        linkedList.pivotSortAlternate(13);
+        linkedList.forceLoop();
+        Node n = linkedList.detectLoop();
+        if(n!=null)
+            System.out.println("Loop detected at: " + n.getData());
+        else
+            System.out.println("No Loop detected");
+//        linkedList.displayList();
+//        System.out.println();
+//        linkedList.insertAtPosi(3,12);
+//        linkedList.displayList();
+//        System.out.println();
+//        System.out.println("CURRENT SIZE: "+ linkedList.getSize());
+//        linkedList.pivotSortAlternate(13);
 //        System.out.println("3rd Last element is: " + linkedList.kthToLast(3));
 //        linkedList.deleteAtPosi(6);
 //        linkedList.displayList();
