@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Stack;
 
 /**
  * Created by Gautam on 8/13/16.
@@ -396,6 +397,7 @@ class LinkedList
                 break;
             }
         }
+        /*CHECK IF NO LOOP CASE*/
         if(fast==null || fast.getLink()==null)
         {
             return null;
@@ -406,7 +408,36 @@ class LinkedList
             slow=slow.getLink();
             fast=fast.getLink();
         }
+        /*AT THIS POINT SLOW=FAST=LOOPING POINT*/
         return fast;
+    }
+
+    public boolean isPalindrome()
+    {
+        Node slow = start;
+        Node fast = start;
+
+        Stack<Integer> stack = new Stack<Integer>();
+        while(fast!=null && fast.getLink()!=null)
+        {
+            stack.push(slow.getData());
+            slow=slow.getLink();
+            fast=fast.getLink().getLink();
+        }
+        /*FOR THE CASE WHEN THE NUMBER OF ELEMENTS IS ODD*/
+        if(fast!=null)
+        {
+            slow=slow.getLink();
+        }
+
+        while(slow!=null)
+        {
+            int tos = stack.pop();
+            if(tos!=slow.getData())
+                return false;
+            slow=slow.getLink();
+        }
+        return true;
     }
 
 
@@ -423,19 +454,23 @@ class LinkedList
 
 class LetsHitIT
 {
+    /* #DRIVER - UNCOMMENT TO TEST VARIOUS PROBLEM CASES*/
     public static void main(String args[]) {
         LinkedList linkedList = new LinkedList();
         linkedList.insertAtStart(25);
         linkedList.insertAtEnd(10);
         linkedList.insertAtEnd(19);
-        linkedList.insertAtEnd(8);
-        linkedList.insertAtEnd(13);
-        linkedList.forceLoop();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(25);
+        linkedList.displayList();
+        System.out.println();
+        //linkedList.forceLoop();
         Node n = linkedList.detectLoop();
         if(n!=null)
             System.out.println("Loop detected at: " + n.getData());
         else
             System.out.println("No Loop detected");
+        System.out.println("Palindrome: " + linkedList.isPalindrome());
 //        linkedList.displayList();
 //        System.out.println();
 //        linkedList.insertAtPosi(3,12);
