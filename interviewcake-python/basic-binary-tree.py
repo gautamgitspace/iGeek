@@ -44,16 +44,16 @@ class Node:
     def inOrder(self):
         if self:
             if self.left:
-                self.left.preOrder()
+                self.left.inOrder()
             print self.value
             if self.right:
-                self.right.preOrder()
+                self.right.inOrder()
     def postOrder(self):
         if self:
             if self.left:
-                self.left.preOrder()
+                self.left.postOrder()
             if self.right:
-                self.right.preOrder()
+                self.right.postOrder()
             print self.value
 
 class Tree:
@@ -84,12 +84,15 @@ class Tree:
             self.root.postOrder()
 
 obj = Tree()
-print obj.insert(20)
-print obj.insert(13)
-print obj.insert(17)
-print obj.insert(11)
-print obj.insert(15)
-print obj.insert(24)
+print "INSERTION:", obj.insert(6)
+print "INSERTION:", obj.insert(2)
+print "INSERTION:", obj.insert(7)
+print "INSERTION:", obj.insert(4)
+print "INSERTION:", obj.insert(1)
+print "INSERTION:", obj.insert(9)
+print "INSERTION:", obj.insert(5)
+print "INSERTION:", obj.insert(8)
+print "INSERTION:", obj.insert(3)
 obj.preOrder()
 obj.postOrder()
 obj.inOrder()
