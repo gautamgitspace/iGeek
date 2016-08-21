@@ -5,9 +5,6 @@ class MaxStack:
      def __init__(self):
          self.base = Stack()
          self.max = Stack()
-     def peek(self):
-        if not self.base: return None
-        return self.base[len(self.base)-1]
      def push(self, item):
         if item >= self.max.peek():
             self.max.push(item)
