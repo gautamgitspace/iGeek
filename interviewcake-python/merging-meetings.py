@@ -14,6 +14,7 @@ if input is sorted, we can avoid sorting and it takes O(n) for time and O(n) for
 """
 def condensed_meeting_times(meetings):
     sorted_meetings = sorted(meetings)
+    print sorted_meetings
     condensed_meetings = [sorted_meetings[0]]
     
     for current_start, current_end in sorted_meetings[1:]:

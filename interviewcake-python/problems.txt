@@ -5,9 +5,9 @@
 5
 6
 7[DONE] - Temperature Tracker
-8
-9[DONE] - BST Validator
-10[DONE] - 2nd Largest element in BST
+8[DONE] - Balanced Binary Tree
+9[DONE] - BST Validator (Py exclusive)
+10[DONE] - 2nd Largest element in BST (Py exclusive)
 11
 12[DONE] - Find in ordered set - (Binary Search O(nlogn))
 13
@@ -16,7 +16,7 @@
 16
 17
 18
-19
+19[DONE] - Queue Using Two Stacks
 20[DONE] - Largest in a Stack
 21[DONE] - Missing Drone Problem
 22[DONE] - Delete a node from a singly-linked list, given only a variable pointing to that node.
@@ -41,4 +41,4 @@
 41
 42
 43[DONE] - Merge 2 Sorted Arrays
-44
+44[DONE] - URL Shortner

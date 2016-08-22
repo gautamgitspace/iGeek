@@ -9,7 +9,7 @@ class Parenthesis:
         return val
 s = Parenthesis()
 test_input_1 = "(this(here) can be useful(helpful(valuable)))"
-test_opening_1 = 0
+test_opening_1 = 5
 #use test case 2 to ruin balancing
 test_input_2 = "(this(here) can be useful(helpful(valuable))"
 test_opening_2 = 0
@@ -20,8 +20,8 @@ for i, item in enumerate(test_input_1):
         s.push(i)
     if item == ")":
         d[s.pop()] = i
-# for key, value in d.items():
-#     print key, value
+for key, value in d.items():
+    print key, value
 for key, value in d.items():
     if key == test_opening_1:
         print "closing found at: ", value

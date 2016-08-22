@@ -9,6 +9,10 @@
     best profit I could have made from 1 purchase and 1 sale of 1 Apple stock yesterday.
     *******************************************************************************************
 """
+
+#Solved using brute force approach element by element comparison
+#using two loops to compute min and max: O(n^2)
+
 def best_profit(stock_prices_yesterday):
     max_profit = 0
     for outer in xrange(len(stock_prices_yesterday)):
