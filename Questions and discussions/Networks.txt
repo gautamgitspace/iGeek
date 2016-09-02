@@ -1,18 +1,24 @@
 Q - Can DNS use TCP? In which cases DNS uses TCP?
-A - DNS uses TCP for Zone Transfer over Port: 53
+A - DNS uses TCP for Zone Transfer over Port: 53 TCP is used if the size of the packet goes over 512 bytes.
 It is necessary to maintain a consistent DNS database between DNS Servers. This is achieved by the TCP protocol.
-This communication happens between DNS Servers only. The Zone Transfer feature of DNS Server will always use TCP protocol.
-The connection is established between the DNS Server to transfer the zone data and Source and Destination DNS Servers
-will make sure that data is consistent by using TCP ACK bit.
+This communication happens between DNS Servers only. The connection is established between the DNS Server to transfer the zone data and
+Source and Destination DNS Servers will make sure that data is consistent by using TCP ACK bit.
 
 DNS uses UDP for DNS Queries over Port: 53
-A client computer will always send a DNS Query using UDP Protocol over Port 53. If a client computer does not get response from a DNS Server,
+A client computer will always send a DNS Query using UDP Protocol over Port 53. The query and response work can be done in one RTT. So this approach is fast
+as compared to TCP as in case of TCP, connection has to established first. If a client computer does not get response from a DNS Server,
 it must re-transmit the DNS Query using the TCP after 3-5 seconds of interval.
 
 Q - How does BGP work?
 A - BGP is an Exterior Gateway Routing Protocol and is used to do routing between ASs or ISPs. Has 4 message types: Open(Open a BGP session with the peer),
 Keeplalive(duh!), Update(Routing updates) and Notification(Bad!). Main reason to use BGP is influence inbound or outbound(mostly) routes. This means giving
 preference to one path over other depending on various factors and policies. Has a long metric list. N-W-L-Li-AS path-O-M-N-I. Has two flavors. eBGP and iBGP.
+
+Q - How does a Juniper Router decides its path (BGP)?
+A - Discuss BGP metric, ties and tie-breakers
+
+Q - Types of Routing? Types of Dynamic Routing Protocols?
+A - Static and Dynamic. LSRP and DVRP
 
 Q - What's the difference between a router and switch?
 A - Router: L3 device, High forwarding rates, Highly configurable, connects two LANs, WANs, PDU-Packet, each port has own broadcast domain, does forwarding on
@@ -21,8 +27,28 @@ Switch: L2 device, less configurable, connects devices in a LAN, PDU-Frame, each
 on hardware logic (CAM and ASICs)
 
 Q - Define bandwidth
-A - bandwidth is technically the data capacity of a network. It measures the volume of data for a transmission connection.
+A - bandwidth is technically the bit-rate of available data capacity of a network. The width of the band limits the data rate that can be carried on the medium
 Bandwidth is measured in kilobits per second or “Kbps.”
+
+Q - Define throughput
+A - bit rate (bits/time unit) at which bits are transferred between sender/receiver
+
+Q - Two switching techniques
+A - Store-and-Forward: Store-and-Forward switching will wait until the entire frame has arrived prior to forwarding it. This method stores the entire frame in memory.
+So if there are 3 links between the source and the destination, the transmission delay Dtr will be: 3L/R (rate of transmission for 3 links = 3* * 1/R)
+Once the frame is in memory, the switch checks the destination address, source address, and the CRC. If no errors are present, the frame is forwarded to the
+appropriate port. This process ensures that the destination network is not affected by corrupted or truncated frames.
+
+Q - DISADV of Packet Switching
+A - Queuing of packets can lead to excessive congestion. Which leads to Packet Delay and Loss. We need congestion control mechanisms.
+
+Q - Types of delay
+A - D_Node =  D_proc(check bit errors, determine output link) + D_queue(router buffer delay) + D_trans(L/R) + D_prop(length of physical link/medium propagation speed)
+
+Cut-Through: Cut-Through switching will begin forwarding the frame as soon as the destination address is identified. The difference between this and Store-and-Forward
+is that Store-and-Forward receives the whole frame before forwarding.Since frame errors cannot be detected by reading only the destination address, Cut-Through may
+impact network performance by forwarding corrupted or truncated frames. These bad frames can create broadcast storms wherein several devices on the network respond
+ to the corrupted frames simultaneously.
 
 Q - SDN Architecture
 A - The Controller in Control Plane is the brain of the Networking Device. Rather than each device having its own brain, the Controller is a single brain

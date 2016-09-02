@@ -1,0 +1,56 @@
+Layers of a Cloud Computing Stack:
+----------------------------------------
+
+• SaaS applications are designed for end-users, delivered over the web
+  - Web access to commercial software
+  - Central management of software
+  - one to many model
+• PaaS is the set of tools and services designed to make coding and deploying those applications quick and efficient
+  - Services to develop, test, deploy, host and maintain applications in the same integrated development
+  - Web based user interface creation tools help to create, modify, test and deploy different UI scenarios
+• IaaS is the hardware and software that powers it all – servers, storage, networks, operating systems
+ - Resources are distributed as a service
+ - Allows for dynamic scaling 
+
+To help understand how these 3 components are related, some have used a transportation analogy;
+
+By itself, infrastructure isn’t useful - it just sits there waiting for someone to make it productive in solving a particular problem.
+Imagine the Interstate transportation system in the U.S. Even with all these roads built, they wouldn’t be useful without cars and trucks to
+transport people and goods. In this analogy, the roads are the infrastructure and the cars and trucks are the platform that sits on top of the
+infrastructure and transports the people and goods. These goods and people might be considered the software and information in the technical realm.
+
+n-tier architecture:
+--------------------
+
+
+If I understand the question, then it seems to me that the questioner is really asking "OK, so 3-tier is well understood,
+but it seems that there's a mix of hype, confusion, and uncertainty around what 4-tier, or to generalize, N-tier architectures mean.
+So...what's a definition of N-tier that is widely understood and agreed upon?"
+
+The classic 3-tier architecture: database, "business logic" and presentation, is a good way to clarify how to honor the principle of separation of
+concerns. Which is to say, if I want to change how "the business" wants to service customers, I should not have to look through the entire system to
+figure out how to do this, and in particular, decisions business issues shouldn't be scattered willy-nilly through the code.
+
+Now, this model served well for decades, and it is the classic 'client-server' model. Fast forward to cloud offerings, where web browsers are the user
+interface for a broad and physically distributed set of users, and one typically ends up having to add content distribution services, which aren't a part
+of the classic 3-tier architecture (and which need to be managed in their own right).
+
+The concept generalizes when it comes to services, micro-services, how data and computation are distributed and so on. Whether or not something
+is a 'tier' largely comes down to whether or not the tier provides an interface and deployment model to services that are behind (or beneath) the tier.
+So a content distribution network would be a tier, but an authentication service would not be.
+
+3 TIER ARCHITECTURE in WEB SYSTEMS:
+------------------------------------
+In the web development field, three-tier is often used to refer to websites, commonly electronic commerce websites, which are built using three tiers:
+
+1. A front-end web server serving static content, and potentially some cached dynamic content. In web based application, Front End is the content rendered
+by the browser. The content may be static or generated dynamically.
+2. A middle dynamic content processing and generation level application server, for example Ruby on Rails, Java EE, ASP.NET, PHP, ColdFusion, Perl,
+Python platform.
+3. A back-end database or data store, comprising both data sets and the database management system software that manages and provides access to the data.
+
+BENEFITS OF LAYERED ARCHITECTURE:
+-----------------------------------
+1. Abstraction, easy to implement OO concepts, It makes the logical separation between business layer and presentation layer and database layer,
+Migration to new graphical environments is faster, New rules or new validation rules can be defined any time and changes made to middle layer will not
+effect presentation layer.
