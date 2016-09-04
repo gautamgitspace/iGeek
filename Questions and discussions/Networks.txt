@@ -50,6 +50,19 @@ is that Store-and-Forward receives the whole frame before forwarding.Since frame
 impact network performance by forwarding corrupted or truncated frames. These bad frames can create broadcast storms wherein several devices on the network respond
  to the corrupted frames simultaneously.
 
+ Q - why we need checksum in both layer-2 and layer-3 of OSI layer
+ A - Simply put, different layers of the OSI model have checksums so you can assign blame appropriately.
+Suppose there is a webserver running on some system (assume TCP port 80, i.e. OSI Layer 4)
+Suppose there is a software error in the Operating System of that webserver that corrupts certain IP payloads. (IPv4 OSI Layer 3)
+
+If we only rely on Ethernet (i.e. OSI Layer 2) checksums, then that error would go un-noticed until something crashes or throws an error, because the Ethernet
+NIC would simply transmit the (already corrupted) data that it received from the Operating System IP stack. However, if TCP, IP and Ethernet all have checksums,
+we can isolate the layer where the error occurred, and notify the appropriate Operating System or application component of the error.
+
+Q -  What is the ROMMON Mode?
+A - The ROM Monitor is a bootstrap program that initializes the hardware and boots the Cisco IOS XR software when you power on or reload a router.
+A version of the ROM Monitor software exists on each card. If the Cisco IOS XR software cannot boot on a card, the card startup ends in ROM Monitor mode
+
 Q - SDN Architecture
 A - The Controller in Control Plane is the brain of the Networking Device. Rather than each device having its own brain, the Controller is a single brain
 controlling hundreds of devices.  Benefits - Easier management(policies). The Controller can push centralized  polices and configuration down to the data
