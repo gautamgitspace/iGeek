@@ -39,16 +39,18 @@ So if there are 3 links between the source and the destination, the transmission
 Once the frame is in memory, the switch checks the destination address, source address, and the CRC. If no errors are present, the frame is forwarded to the
 appropriate port. This process ensures that the destination network is not affected by corrupted or truncated frames.
 
+Cut-Through: Cut-Through switching will begin forwarding the frame as soon as the destination address is identified. The difference between this and Store-and-Forward
+is that Store-and-Forward receives the whole frame before forwarding.Since frame errors cannot be detected by reading only the destination address, Cut-Through may
+impact network performance by forwarding corrupted or truncated frames. These bad frames can create broadcast storms wherein several devices on the network respond
+ to the corrupted frames simultaneously.
+
+
 Q - DISADV of Packet Switching
 A - Queuing of packets can lead to excessive congestion. Which leads to Packet Delay and Loss. We need congestion control mechanisms.
 
 Q - Types of delay
 A - D_Node =  D_proc(check bit errors, determine output link) + D_queue(router buffer delay) + D_trans(L/R) + D_prop(length of physical link/medium propagation speed)
 
-Cut-Through: Cut-Through switching will begin forwarding the frame as soon as the destination address is identified. The difference between this and Store-and-Forward
-is that Store-and-Forward receives the whole frame before forwarding.Since frame errors cannot be detected by reading only the destination address, Cut-Through may
-impact network performance by forwarding corrupted or truncated frames. These bad frames can create broadcast storms wherein several devices on the network respond
- to the corrupted frames simultaneously.
 
  Q - why we need checksum in both layer-2 and layer-3 of OSI layer
  A - Simply put, different layers of the OSI model have checksums so you can assign blame appropriately.
@@ -58,6 +60,33 @@ Suppose there is a software error in the Operating System of that webserver that
 If we only rely on Ethernet (i.e. OSI Layer 2) checksums, then that error would go un-noticed until something crashes or throws an error, because the Ethernet
 NIC would simply transmit the (already corrupted) data that it received from the Operating System IP stack. However, if TCP, IP and Ethernet all have checksums,
 we can isolate the layer where the error occurred, and notify the appropriate Operating System or application component of the error.
+
+Q - What is IP Fragmentation? What are its disadvantages? How to avoid fragmentation?
+A - The process of breaking the datagrams into smaller pieces so that they can be transmitted on a link with a smaller MTU (MTU of a layer is the size of the
+largest PDU that the layer can pass) than the original datagram size.
+There is a small increase in CPU and memory overhead to fragment an IP datagram. This holds true for the sender as well as for a router in the path between a sender
+and a receiver. Creating fragments simply involves creating fragment headers and copying the original datagram into the fragments. IP fragmentation can cause
+excessive retransmissions when fragments encounter packet loss and reliable protocols such as TCP must retransmit all of the fragments in order to recover from the
+loss of a single fragment. Fragmentation causes more overhead for the receiver when reassembling the fragments because the receiver must allocate memory for the
+arriving fragments and coalesce them back into one datagram after all of the fragments are received. Reassembly on a host is not considered a problem because the
+host has the time and memory resources to devote to this task. But, reassembly is very inefficient on a router whose primary job is to forward packets as quickly
+as possible. A router is not designed to hold on to packets for any length of time. Also a router that does reassembly chooses the largest buffer available (18K)
+with which to work because it has no way to know the size of the original IP packet until the last fragment is received.
+
+Another fragmentation issue involves how dropped fragments are handled. If one fragment of an IP datagram is dropped, then the entire original IP datagram must be resent,
+and it will also be fragmented.
+
+Senders typically use two approaches to decide the size of IP datagrams to send over the network.
+a) The first is for the sending host to send an IP datagram of size equal to the MTU of the first hop of the source destination pair.
+b) The second is to run the path MTU discovery (PMTUD) algorithm:
+For IPv4 packets, Path MTU Discovery works by setting the Don't Fragment (DF) flag bit in the IP headers of outgoing packets. Then, any device along the path whose
+MTU is smaller than the packet will drop it, and send back an Internet Control Message Protocol (ICMP) Fragmentation Needed (Type 3, Code 4) message containing its MTU,
+allowing the source host to reduce its Path MTU appropriately. The process is repeated until the MTU is small enough to traverse the entire path without fragmentation.
+IPv6 routers do not support fragmentation or the Don't Fragment option. For IPv6, Path MTU Discovery works by initially assuming the path MTU is the same as the MTU on
+the link layer interface where the traffic originates. Then, similar to IPv4, any device along the path whose MTU is smaller than the packet will drop the packet and
+send back an ICMPv6 Packet Too Big (Type 2) message containing its MTU, allowing the source host to reduce its Path MTU appropriately. The process is repeated until
+the MTU is small enough to traverse the entire path without fragmentation.
+
 
 Q -  What is the ROMMON Mode?
 A - The ROM Monitor is a bootstrap program that initializes the hardware and boots the Cisco IOS XR software when you power on or reload a router.

@@ -13,3 +13,13 @@ semaphore count is 0. Now, when eq. one person leaves the toilet, semaphore is i
 
 Officially: "A semaphore restricts the number of simultaneous users of a shared resource up to a maximum number. Threads can request access to the resource
 (decrementing the semaphore), and can signal that they have finished using the resource (incrementing the semaphore)." Ref: Symbian Developer Library
+
+
+Q: 2>$1 in bash scripting:
+
+File descriptor 1 is the standard output (stdout).
+File descriptor 2 is the standard error (stderr).
+
+Here is one way to remember this construct (although it is not entirely accurate): at first, 2>1 may look like a good way to redirect stderr to stdout.
+However, it will actually be interpreted as "redirect stderr to a file named 1". & indicates that what follows is a file descriptor and not a filename.
+So the construct becomes: 2>&1.
