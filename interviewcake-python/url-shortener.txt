@@ -38,7 +38,7 @@ The code for redirection endpoint:
         destination = DB.get('Links', 'destination', {'slug': request.path})
         return Redirect302(destination)
 
-how generate_new_random_slug() works? 26+26+10 = 62. 62^7 ~ 5 trillion
+how generate_new_random_slug() works? 26(Upper Case Alphabets) + 26(Lower Case Alphabets) + 10(digits) = 62. if 7 is the length of the slug, 62^7 ~ 5 trillion
 
 def generate_random_slug():
   alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -49,7 +49,7 @@ But how do we ensure slugs are unique? Two general strategies:
 
 1. "Re-roll" when we hit an already-used slug
 2. Adjust our slug generation strategy to only ever give us un-claimed slugs.
-2nd one is condierably better. How to do it? Using base conversion - base 62
+2nd one is considerably better. How to do it? Using base conversion - base 62
 One potential issue: the current_random_slug_id could give us something that
 a user has already claimed as a user-generated slug. We'll need to check for that,
 and if it happens we'll just increment the current_random_slug_id and try again
@@ -84,5 +84,8 @@ This becomes especially important when we start getting a heavy load of requests
 like if one of our links is on the front page of Reddit. If we have the redirect URL right there in memory,
 we can process those redirects quickly.
 
-Depending on the database we use, it might already have an in-memory cache system.
+Depending on the database we use, it might already have an in-memory cache system (Oracle has one)
 To get more links in memory, we may be able to configure our database to use more space for its cache.
+Or we could use a memory caching system like memcached which is key-value based ditributed hash table that works
+on client server architecture. This can speed up responses as request won't go to slow DB or won't hit API every
+time. (talk about overall design that includes: client, dispatcher, memcached, worker pool and workers)
