@@ -1,18 +1,54 @@
 # pseudo code for Employee Card Reader System
-def validate_user(request):
+
+import random
+#VALIDATES AN EXISTING EMPLOYEE
+def validate_user(employee, request):
     existingChipCode = DB.get(request.data.uniqueChipCode)
     if existingChipCode:
         fp = DB.get(request.data.finger)
         if fp:
-            DB.insert('Employee', {userID : userID, timestamp : system.getLocalTimeStamp(), area_code : system.getAreaCode(), direction : sensor.getDirection()})
+            DB.insert('EmployeeActivity', {userID : employee.userID, timestamp : system.getLocalTimeStamp(), area_code : system.getAreaCode(), direction : sensor.getDirection()})
             system.sendTrap('OPEN DOOR')
             sensor.flashLED('GREEN')
         if not fp:
-            DB.insert('Log', {unauthorized_flag_fp : true, userID : userID, timestamp.getLocalTimeStamp, area_code : system.getAreaCode()}, direction : sensor.getDirection()})
+            DB.insert('Log', {unauthorized_flag_fp : true, employee.userID : userID, timestamp.getLocalTimeStamp, area_code : system.getAreaCode()}, direction : sensor.getDirection()})
             sensor.flashLED('RED')
     if not existingChipCode:
-        DB.insert('Log', {unauthorized_flag_chip : true, userID : userID, timestamp.getLocalTimeStamp, area_code : system.getAreaCode()}, direction : sensor.getDirection()})
+        DB.insert('Log', {unauthorized_flag_chip : true, timestamp.getLocalTimeStamp, area_code : system.getAreaCode()}, direction : sensor.getDirection()})
         sensor.flashLED('RED')
+
+#ADDS A NOOGLER TO THE SYSTEM
+def add_noogler(employee):
+    uniqueChipCode = randomSlug()
+    DB.insert('EmployeeTable', {userID : employee.userID, userName: employee.userName, uniqueChipCode : uniqueChipCode})
+    burnToCard(employee, uniqueChipCode)
+
+#BURN CODE TO CARD - EMPLOYEE
+def burnToCard(employee, uniqueChipCode):
+    card.burn(uniqueChipCode)
+
+#BURN CODE TO CARD - VISITOR
+def burnToCard(visitor, randomTempCode):
+    card.burn(randomTempCode)
+
+#GENERATEES RANDOM SLUG OF 7 CHARS
+def randomSlug():
+    passphrase = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    slug = ''.join([random.choice(passphrase) for x in range(7)])
+    slug_comparator = DB.get(slug)
+    if not slug_comparator:
+        return slug
+    else:
+        randomSlug()
+
+#ADD A NEW VISITOR
+def visitor(visitor):
+    randomTempCode = randomSlug()
+    DB.insert('VisitorTable', {timestamp : system.getLocalTimeStamp(), visitorRandomCode: randomTempCode})
+    burnToCard(visitor, randomTempCode)
+
+
+
 
 #SCOPE
 """
