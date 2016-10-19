@@ -1,0 +1,4 @@
+1, San Jose, 3000, nexus
+2, Georgia, 33000, HTC
+3, Wenatchee, 2000, motrola
+4, Buffalo, 14000, LG

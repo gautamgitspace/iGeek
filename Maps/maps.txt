@@ -1,0 +1,5 @@
+HashSet<K> - Does not allows duplicate values. Use for storing unique elements
+HashMap<K,V> - Key, Value mapping. Is not synchronized. Doesn't maintain the order of insertion. Keys not kept in sorted order.
+LinkedHashMap<K,V> -  Key, Value mapping. Is not synchronized. Maintains the order of insertion.
+TreeMap<K,V> - Key, Value mapping. Keeps keys in sorted order.
+NavigableMap<K,V> - Key, Valye mapping. Keeps keys in sorte order. Can be used to output values in descening order of keys.
