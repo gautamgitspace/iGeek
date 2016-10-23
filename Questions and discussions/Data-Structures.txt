@@ -23,34 +23,62 @@ Java uses both option 1 and 2 in its hash table implementations.
 
 How is a lookup in Hash Table O(1)?
 
-each value is assigned(hashed) to a specific key value and is fetched by specifying the key value(fixed location) so its O(1). At worst the lookup can be O(n) when you have to traverse the list which is produced as a result of separatate chaining(to deal with collisions)
+each value is assigned(hashed) to a specific key value and is fetched by specifying the key value(fixed location) so its O(1). At worst the
+lookup can be O(n) when you have to traverse the list which is produced as a result of separate chaining(to deal with collisions)
 
 Stack and Heap?
 
-A stack is the call stack or the program stack which is used to allocate static memory. The stack is used to keep track of variables/parameters local to a function in a program. Whenever you call a new function, a new stack frame is pushed to the stack with parameters, variables local to that function along with the return address. When that function returns, the stack frame is popped out and the context switches back to the previous function (the caller) using the return address.
+A stack is the call stack or the program stack which is used to allocate static memory. The stack is used to keep track of variables/parameters
+local to a function in a program. Whenever you call a new function, a new stack frame is pushed to the stack with parameters, variables local to
+that function along with the return address. When that function returns, the stack frame is popped out and the context switches back to the
+previous function (the caller) using the return address.
 
-Memory on the heap is allocated wheneve the new operator is used. in C this is done by calloc, malloc and realloc.
+Memory on the heap is allocated whenever the new operator is used. in C this is done by calloc, malloc and realloc.
 
-When you know how much memory you need before compile time, a stack can be used. If you do not know the amount of memory needed at run time, you can allocate memory on the heap.
+When you know how much memory you need before compile time, a stack can be used. If you do not know the amount of memory needed at run time,
+you can allocate memory on the heap.
 
-A stack is fast and does not needs to be managed. It's fast because it just needs offest adjustements and stack pointer movements(moves it pass the stack fram during a push or a allocate operation and moves back the stack pointer to the beginning of the stack frame during a pop or deallocate) where as memory allocation in heap requires system calls. Heap has to deal with memory gaps unlike stacks. Hence memory allocation in heap cannot be achieved in constant time.
+A stack is fast and does not needs to be managed. It's fast because it just needs offset adjustments and stack pointer movements
+(moves it pass the stack frame during a push or a allocate operation and moves back the stack pointer to the beginning of the stack
+frame during a pop or deallocate) whereas memory allocation in heap requires system calls. Heap has to deal with memory gaps unlike stacks.
+Hence memory allocation in heap cannot be achieved in constant time.
 
 Compiled vs Interpreted Language
 
-A compiled language is one in which the source program once compiled, is written in the instructions(byte code) of the native machine. This is byte code is then interpretted by a software program or a virtual machine like JVM which does JIT compilation. 
+A compiled language is one in which the source program once compiled, is written in the instructions(byte code) of the native machine.
+This is byte code is then either executed by the CPU or (in case of java) interpreted by a software program or a virtual machine like JVM which
+does JIT compilation. Roughly, JIT compilation combines the speed of compiled code with the flexibility of interpretation, with the overhead
+of an interpreter and the additional overhead of compiling (not just interpreting).
 
-An interpreted language is one in which soure code is interpreted by a software called interpreter. An interpreted language is any programming language that isn’t already in “machine code” prior to runtime. Unlike compiled languages, an interpreted language’s translation doesn’t happen beforehand. Translation occurs at the same time as the program is being executed.
+An interpreted language is one in which source code is interpreted by a software called interpreter. An interpreted language is any programming
+language that isn’t already in “machine code” prior to runtime. Unlike compiled languages, an interpreted language’s translation doesn’t happen
+beforehand. Translation occurs at the same time as the program is being executed.
 
-Many of an interpreted language’s instructions can be executed directly, without compiling to machine code; however, when certain code is required, an interpreter steps in during runtime and translates it on the spot. The interpreter is a program that converts source code—the human-readable code mentioned above—into machine code each time you run the program, one line at a time. It starts interpreting each instruction immediately upon execution, which means that the resulting program runs slower than a compiled program
+Many of an interpreted language’s instructions can be executed directly, without compiling to machine code; however, when certain code is required,
+an interpreter steps in during runtime and translates it on the spot. The interpreter is a program that converts source code—the human-readable code
+mentioned above—into machine code each time you run the program, one line at a time. It starts interpreting each instruction immediately upon execution,
+which means that the resulting program runs slower than a compiled program
 
-in C: Compiler produces assembly code. Assembler deals with assembly code and outputs object code. The object code generated in the assembly stage is composed of machine instructions that the processor understands but some pieces of the program are out of order or missing. To produce an executable program, the existing pieces have to be rearranged and the missing ones filled in. This process is called linking. The Linker will arrange the pieces of object code so that functions in some pieces can successfully call functions in other pieces. It will also add pieces containing the instructions for library functions used by the program. Finally a Loader will load the executable instructions on to the program address space.
+in C: Compiler produces assembly code. Assembler deals with assembly code and outputs object code. The object code generated in the assembly stage
+is composed of machine instructions that the processor understands but some pieces of the program are out of order or missing. To produce an
+executable program, the existing pieces have to be rearranged and the missing ones filled in. This process is called linking. The Linker will
+arrange the pieces of object code so that functions in some pieces can successfully call functions in other pieces. It will also add pieces
+containing the instructions for library functions used by the program. Finally a Loader will load the executable instructions on to the program
+address space.
 
-In between those 2 extremes there are also grey areas, e.g. many programs are "compiled" into an intermediate language which then gets interpreted. E.g. Java.
+In between those 2 extremes there are also grey areas, e.g. many programs are "compiled" into an intermediate language (btye code) which then
+gets interpreted. E.g. Java.
 
 COMPILED LANGUAGES ADV:
 Faster performance by directly using the native code of the target machine
-Opportunity to apply quite powerful optimisations during the compile stage
+Opportunity to apply quite powerful optimizations during the compile stage
 
 INTERPRETED LANGUAGES ADV:
 Easier to implement (writing good compilers is very hard!!)
 No need to run a compilation stage: can execute code directly "on the fly"
+
+JAVA memory mgmt:
+https://www.dynatrace.com/resources/ebooks/javabook/how-garbage-collection-works/
+
+C memory mgmt:
+http://stackoverflow.com/questions/24891/c-memory-management
