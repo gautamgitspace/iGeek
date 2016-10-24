@@ -82,3 +82,7 @@ https://www.dynatrace.com/resources/ebooks/javabook/how-garbage-collection-works
 
 C memory mgmt:
 http://stackoverflow.com/questions/24891/c-memory-management
+
+ArrayList VS Linked List
+1. Insertion at the beginning fast in linked list O(1) otherwise takes O(n)
+2. Accessing an element fast in array list O(1) and linked list O(n) worst case
