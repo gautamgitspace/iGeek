@@ -5,8 +5,6 @@ def zeroes_to_the_right(array):
         if item != 0:
             array[count] = item
             count+=1
-    print 'COUNT:', count
-    print 'len of array:', len(array)
     while(count < len(array)):
             array[count] = 0
             count+=1
