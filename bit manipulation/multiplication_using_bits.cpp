@@ -15,7 +15,7 @@ int multiplyWithThreePointFive(int x)
 
 int multiplyWithSeven(int x)
 {
-    return ((x << 1) + x + (x >> 1))*2;
+    return ((x<<3)-x);
 }
 
 int multiplyTwoNumbers(int x, int y)
@@ -36,7 +36,7 @@ int multiplyTwoNumbers(int x, int y)
 int main(int argc, const char * argv[])
 {
     printf("%d\n",multiplyWithThreePointFive(2));
-    printf("%d\n",multiplyWithSeven(2));
+    printf("%d\n",multiplyWithSeven(3));
     printf("%d\n",multiplyTwoNumbers(4, 3));
     
     return 0;
