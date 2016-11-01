@@ -19,9 +19,17 @@ unsigned int countSetBits(unsigned int x)
     return count;
 }
 
+void checkPowerOfTwo(unsigned int x)
+{
+    if(((x&(x-1)) == 0))
+       printf("POWER OF 2\n");
+    else
+       printf("NOT A POWER OF 2\n");
+}
+
 int main(int argc, const char * argv[])
 {
-    unsigned int bitCount = countSetBits(6);
+    unsigned int bitCount = countSetBits(256);
     if(bitCount == 1)
     {
         printf("\nNumber is a power of 2\n");
@@ -30,5 +38,6 @@ int main(int argc, const char * argv[])
     {
         printf("Number is not a power of 2\n");
     }
+    checkPowerOfTwo(256);
     return 0;
 }
