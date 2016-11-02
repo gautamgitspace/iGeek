@@ -12,7 +12,7 @@ bool checkPowerOfFour(int n)
 {
     int count = 0;
     /*CHECK IF ONLY ONE BIT IS SET*/
-    if(n && !(n&(n-1)))
+    if(n && (n&(n-1))==0)
     {
         /*COUNT ZERO BITS BEFORE THE ONE SET BIT*/
         while(n > 1)
@@ -28,7 +28,7 @@ bool checkPowerOfFour(int n)
 
 int main(int argc, const char * argv[])
 {
-    int result = checkPowerOfFour(13);
+    int result = checkPowerOfFour(16384);
     if (result == 1)
         printf("\n[YES] power of four\n");
     else
