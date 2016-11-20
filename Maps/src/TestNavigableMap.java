@@ -9,10 +9,11 @@ import java.util.*;
  * Created by Gautam on 10/12/16.
  * NAVIGABLE MAP TO RETURN KEYS IS DESCENDING ORDER
  */
-public class NavigableMap
+public class TestNavigableMap
 {
-    public static java.util.NavigableMap<Integer, String> sorted_map_phones = new TreeMap<>();
-    public static java.util.NavigableMap<Integer, String> readFromFile(String fileName)
+    public static NavigableMap<Integer, String> sorted_map_phones = new TreeMap<Integer, String>() {
+    };
+    public static NavigableMap<Integer, String> readFromFile(String fileName)
     {
 
         try {
@@ -35,6 +36,7 @@ public class NavigableMap
     {
         String fileName = "/Users/Gautam/Desktop/phones.txt";
         java.util.NavigableMap<Integer, String> result = readFromFile(fileName);
+        System.out.println("Sorting in Desceding order of phone count:");
         System.out.println(result);
     }
 
