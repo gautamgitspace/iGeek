@@ -9,6 +9,7 @@ def largest(node):
     return node.value
 def second_largest(node):
     #CASE 1: when we are at largest and largest element has a left-subtree
+    #we will be at the largest when the node has no right sub-tree(but may have left)	
     if node.left and not node.right:
         return largest(node.left)
     #CASE 2: when we are at parent of largest and largest has no left or right tree

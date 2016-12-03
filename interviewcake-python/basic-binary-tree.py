@@ -21,6 +21,11 @@ class Node:
             else:
                 self.right = Node(data)
                 return True
+    def delete(self, data):
+        #CASE 1 : if the node has no children, kill it!
+        #CASE 2 : if the node has one child/sub-tree, make the parent point to that child/sub-tree
+        #CASE 3 : if the node has two children, find max in left sub-tree OR find min in right sub-tree
+                
     def find(self, data):
         if self.value == data:
             return True
@@ -84,16 +89,16 @@ class Tree:
             self.root.postOrder()
 
 obj = Tree()
-print "INSERTION:", obj.insert(1)
+print "INSERTION:", obj.insert(7)
 print "INSERTION:", obj.insert(2)
-print "INSERTION:", obj.insert(3)
+print "INSERTION:", obj.insert(6)
 print "INSERTION:", obj.insert(4)
 print "INSERTION:", obj.insert(5)
-print "INSERTION:", obj.insert(6)
-print "INSERTION:", obj.insert(7)
-print "INSERTION:", obj.insert(8)
+print "INSERTION:", obj.insert(1)
 print "INSERTION:", obj.insert(9)
 print "INSERTION:", obj.insert(10)
+print "INSERTION:", obj.insert(8)
+print "INSERTION:", obj.insert(3)
 obj.preOrder()
 obj.postOrder()
 obj.inOrder()

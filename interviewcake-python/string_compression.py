@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#string compression algorithm
+#string compression algorithm O()
 def compression(str_raw):
     tokens = []
     count = 1

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 def parser(input):
     #remove periods and other characters. Useful to detect words that are ending with
     #capital letters.
