@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import operator
-fname = "/Users/Gautam/Work/CTCIv5.0/Maps/python-dicts"
+fname = "/Users/abhigaut/Library/Mobile Documents/com~apple~CloudDocs/GitHub Cloud/iGeek/Maps/python-dicts/phones.txt"
 fileHandle = open(fname)
 map = {}
 for line in fileHandle:
