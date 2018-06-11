@@ -52,7 +52,7 @@ def deleteNode(root, key):
             root = None
             return temp
 
-        # Node with two children: Get the inorder successor (smallest in the right subtree)
+        # Node with two children: Get smallest in the right subtree
         temp = minValueNode(root.right)
         # Copy the min val node's content to this node
         root.key = temp.key
