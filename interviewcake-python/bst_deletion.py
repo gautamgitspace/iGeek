@@ -40,7 +40,9 @@ def deleteNode(root, key):
 
     # If key is same as root's key, then this is the node to be deleted
     else:
-        # Node with only one child or no child
+        # Node with only one child or no child. 
+        # In case of one child, child becomes temp is returned
+        # In case of no child, null become temp and is returned
         if root.left is None :
             temp = root.right
             root = None
