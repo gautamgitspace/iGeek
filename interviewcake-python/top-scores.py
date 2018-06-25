@@ -6,6 +6,7 @@ def count_sort(unsorted_list, highest_score):
     for score in unsorted_list:
         score_to_counts[score]+=1
     print score_to_counts
+    # here score is the index and occurence is the value
     for score, occurrence in enumerate(score_to_counts):
         if occurrence!=0:
             for x in range(occurrence):#append as many times it occurs

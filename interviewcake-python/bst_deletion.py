@@ -40,7 +40,9 @@ def deleteNode(root, key):
 
     # If key is same as root's key, then this is the node to be deleted
     else:
-        # Node with only one child or no child
+        # Node with only one child or no child. 
+        # In case of one child, child becomes temp is returned
+        # In case of no child, null become temp and is returned
         if root.left is None :
             temp = root.right
             root = None
@@ -50,11 +52,12 @@ def deleteNode(root, key):
             root = None
             return temp
 
-        # Node with two children: Get the inorder successor (smallest in the right subtree)
+        # Node with two children: Get smallest in the right subtree
         temp = minValueNode(root.right)
-        # Copy the inorder successor's content to this node
+        # Copy the min val node's content to this node
         root.key = temp.key
-        # Delete the inorder successor
+        # Delete the minval node by passing the old parent of minval node to delete 
+        # as root and minval node as the node to be deleted
         root.right = deleteNode(root.right , temp.key)
     return root
 
