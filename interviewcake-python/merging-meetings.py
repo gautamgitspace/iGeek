@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 algo - if end_first >= start_second:
             start = start_first
@@ -16,7 +17,8 @@ def condensed_meeting_times(meetings):
     sorted_meetings = sorted(meetings)
     print sorted_meetings
     condensed_meetings = [sorted_meetings[0]]
-    
+    print condensed_meetings
+
     for current_start, current_end in sorted_meetings[1:]:
         print "c_s & c_e: ", current_start, current_end
         last_merged_start, last_merged_end = condensed_meetings[-1]
