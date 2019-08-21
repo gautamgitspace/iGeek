@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 """
-Create a directory with name newdirand create a file tempo in the new dir
+Create a directory with name newdir and create a file tempo in the new dir
 """
 import os
 import subprocess

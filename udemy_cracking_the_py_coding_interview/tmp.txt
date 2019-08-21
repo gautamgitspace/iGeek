@@ -1,0 +1,7 @@
+2419599 -rw-rw-rw-  1 gautam  staff   597B Aug  4 14:49 file_operations_one.py
+2419614 -rw-rw-rw-  1 gautam  staff   760B Aug  4 15:14 file_operations_two.py
+2419608 -rw-rw-rw-  1 gautam  staff   531B Aug  4 15:40 file_operations_three.py
+2421928 -rw-rw-rw-  1 gautam  staff   506B Aug  4 16:22 file_operations_four.py
+2431911 -rw-r--r--  1 gautam  staff   536B Aug  4 18:12 tmp.txt
+2427162 -rwxrwxrwx  1 gautam  staff   769B Aug  4 18:12 file_operations_five.py
+2431910 -rw-r--r--  1 gautam  staff     0B Aug  4 18:13 dir_contents.txt
