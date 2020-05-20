@@ -15,6 +15,10 @@ print (c['x'])
 print (c['y']) # will find in a and print from a
 print (c['z']) # will NOT find in a and search and print from b
 
+print(list(c.keys()))
+print(list(c.values()))
+print(c.maps)
+
 print ('\n')
 
 merge = dict(a)
